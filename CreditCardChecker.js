@@ -1,3 +1,5 @@
+const { reverse } = require("dns");
+
 // All valid credit card numbers
 const valid1 = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8];
 const valid2 = [5, 5, 3, 5, 7, 6, 6, 7, 6, 8, 7, 5, 1, 4, 3, 9];
@@ -24,3 +26,39 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 
 // Add your functions below:
+
+function validateCred(array) {
+    let firstStep = []
+    let counter = 1;
+    for(let x = array.length -1; x>-1;x--){
+        
+        if(counter%2===0){
+            if(2*(array[x])>9){
+                firstStep.push((2*(array[x]))-9);
+            }else{
+                firstStep.push(2*(array[x]));
+            }
+             
+        }else{
+            firstStep.push(array[x])
+        }
+        counter+=1;
+    }
+
+    const SecondStep= firstStep.reduce((accumulator, currentValue) => {  
+        return accumulator + currentValue;
+      });
+
+    if(SecondStep%10===0){
+
+        return true 
+    }else{
+        return false
+    }
+
+}
+
+
+
+
+console.log(validateCred(invalid1))

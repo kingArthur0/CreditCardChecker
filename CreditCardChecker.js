@@ -58,7 +58,12 @@ function validateCred(array) {
 
 }
 
+function findInvalidCards(array){
 
 
+    const invalidCards =array.filter(num=>{return validateCred(num) === false})
 
-console.log(validateCred(invalid1))
+    return invalidCards;
+}
+
+console.log(findInvalidCards(batch))

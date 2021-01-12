@@ -27,6 +27,15 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 
+companiesAndInvalidNumbers = { 
+    "Amex":[],
+    "Visa":[],
+    "Mastercard":[],
+    "Discover":[],
+    "InvalidCompanies":[]
+}
+
+
 function validateCred(array) {
     let firstStep = []
     let counter = 1;
@@ -66,4 +75,37 @@ function findInvalidCards(array){
     return invalidCards;
 }
 
-console.log(findInvalidCards(batch))
+
+
+
+function idInvalidCardCompanies(bigarray){
+    
+    bigarray.forEach(smallarray=>{
+
+        const firstdigit = smallarray[0];
+        switch(firstdigit){
+            case 3: 
+            companiesAndInvalidNumbers["Amex"].push(smallarray)
+            break;
+            case 4:
+            companiesAndInvalidNumbers["Visa"].push(smallarray);
+            break;
+            case 5:
+            companiesAndInvalidNumbers["Mastercard"].push(smallarray);
+            break;
+            case 6:
+            companiesAndInvalidNumbers["Discover"].push(smallarray);
+            break;
+            
+
+        }
+
+        
+       
+        })
+    console.log(companiesAndInvalidNumbers)
+}
+
+
+
+idInvalidCardCompanies(findInvalidCards(batch))
